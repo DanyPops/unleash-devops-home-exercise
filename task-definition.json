@@ -8,7 +8,15 @@
          ],
          "essential": true,
          "image": "",
-         "logConfiguration": {},
+         "logConfiguration": {
+             "logDriver": "awslogs",
+             "options": {
+               "awslogs-group": "/ecs/bucketeer",
+               "awslogs-region": "eu-north-1",
+               "awslogs-stream-prefix": "ecs",
+               "awslogs-create-group": "true"
+             }
+         },
          "name": "bucketeer",
          "portMappings": [ 
             { 
