@@ -1,7 +1,7 @@
 FROM docker.io/library/node:18-alpine3.20
 
 WORKDIR /home/node/
-COPY --chown=node:node package*.json .
+COPY --chown=node:node package*.json ./
 USER node
 RUN npm install \
   && npm install typescript

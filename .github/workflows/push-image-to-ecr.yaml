@@ -32,10 +32,7 @@ jobs:
 
       - name: Build and push
         id: buildpush
-        uses: docker/build-push-action@v4
-        with:
-          builder: ${{ steps.buildx.outputs.name }}
-          context: .
-          file: Containerfile
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ vars.ECR_REGI_ADDRESS }}/dpop/bucketeer:v1-test
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}
+        run: make image-ecr
