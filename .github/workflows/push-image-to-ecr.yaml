@@ -34,5 +34,4 @@ jobs:
         id: buildpush
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}
         run: make image-ecr
