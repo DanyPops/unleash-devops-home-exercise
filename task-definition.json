@@ -1,11 +1,6 @@
 {
    "containerDefinitions": [ 
       { 
-         "command": [""],
-         "entryPoint": [
-            "sh",
-            "-c"
-         ],
          "essential": true,
          "image": "",
          "logConfiguration": {
