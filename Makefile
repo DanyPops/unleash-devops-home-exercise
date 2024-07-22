@@ -1,10 +1,12 @@
 CONTAINERFILE = ./Containerfile
-IMAGE_NAME = dpop/bucketeer
-APP_VERSION = v1
-GIT_HASH = test
-CONTAINER_IMAGE = $(IMAGE_NAME):$(APP_VERSION)-$(GIT_HASH)
-CONTAINER_IMAGE_ECR = $(ECR_REGISTRY)/$(IMAGE_NAME):$(APP_VERSION)-$(GIT_HASH)
-CONTAINER_NAME = bucketeer-$(APP_VERSION)-$(GIT_HASH)
+IMAGE_NAME = bucketeer
+
+ifeq ($(IMAGE_TAG),)
+IMAGE_TAG = $(shell git rev-parse --short HEAD)
+endif
+
+CONTAINER_IMAGE = $(IMAGE_NAME):$(IMAGE_TAG)
+CONTAINER_IMAGE_ECR = $(ECR_REGISTRY)/$(ECR_REPOSITORY):$(IMAGE_TAG)
 
 build:
 	npm run build
@@ -32,4 +34,4 @@ container: image
 		-e AWS_ACCESS_KEY_ID=$(AWS_ACCESS_KEY_ID) \
 		-e AWS_SECRET_ACCESS_KEY=$(AWS_SECRET_ACCESS_KEY) \
 		--name $(CONTAINER_NAME) \
-		$(CONTAINER_IMAGE)
+		bucketeer
