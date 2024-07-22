@@ -22,8 +22,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ${{ vars.ECR_REGI_ADDRESS }}
-          username: ${{ secret.ECR_REGI_USER }}
-          password: ${{ secret.ECR_REGI_PASS }}
+          username: ${{ secrets.ECR_REGI_USER }}
+          password: ${{ secrets.ECR_REGI_PASS }}
 
       - name: Build and push
         id: buildpush
