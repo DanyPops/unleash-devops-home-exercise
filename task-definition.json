@@ -1,0 +1,33 @@
+{
+   "containerDefinitions": [ 
+      { 
+         "command": [""],
+         "entryPoint": [
+            "sh",
+            "-c"
+         ],
+         "essential": true,
+         "image": "",
+         "logConfiguration": {},
+         "name": "sample-fargate-app",
+         "portMappings": [ 
+            { 
+               "containerPort": 3000,
+               "hostPort": 80,
+               "protocol": "tcp"
+            }
+         ]
+      }
+   ],
+   "cpu": "256",
+   "executionRoleArn": "",
+   "family": "bucketeer-task-definition",
+   "memory": "512",
+   "networkMode": "awsvpc",
+   "runtimePlatform": {
+        "operatingSystemFamily": "LINUX"
+    },
+   "requiresCompatibilities": [ 
+       "FARGATE" 
+    ]
+}
