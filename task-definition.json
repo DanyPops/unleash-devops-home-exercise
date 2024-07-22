@@ -9,7 +9,7 @@
          "essential": true,
          "image": "",
          "logConfiguration": {},
-         "name": "sample-fargate-app",
+         "name": "bucketeer",
          "portMappings": [ 
             { 
                "containerPort": 3000,
