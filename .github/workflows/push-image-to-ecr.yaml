@@ -44,8 +44,8 @@ jobs:
           container-name: ${{ vars.CONTAINER_NAME }}
           image: ${{ steps.build-push-image.outputs.image }}
           environment-variables: |
-            BUCKET_NAME: ${{ vars.BUCKET_NAME }}
-            AWS_REGION: ${{ vars.AWS_REGION }}
+            BUCKET_NAME=${{ vars.BUCKET_NAME }}
+            AWS_REGION=${{ vars.AWS_REGION }}
 
       - name: Deploy ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
