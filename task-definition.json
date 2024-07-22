@@ -23,6 +23,7 @@
       }
    ],
    "cpu": "256",
+   "taskRoleArn": "arn:aws:iam::905418187602:role/S3AccessRole",
    "executionRoleArn": "arn:aws:iam::905418187602:role/ecs_task_execution_role",
    "family": "bucketeer-task-definition",
    "memory": "512",
