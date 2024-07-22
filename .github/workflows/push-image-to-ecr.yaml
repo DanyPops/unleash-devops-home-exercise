@@ -1,4 +1,4 @@
-name: Push Bucketeer container image to Amazon ECR
+name: Push Bucketeer image to Amazon ECR
 run-name: Pushing Bucketeer image - new commit to master branch by ${{ github.actor }}
 on:
   push:
@@ -6,6 +6,7 @@ on:
 
 jobs:
   docker:
+    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +19,6 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login
-        environment: development
         uses: docker/login-action@v2
         with:
           registry: ${{ vars.ECR_REGI_ADDRESS }}
@@ -27,7 +27,6 @@ jobs:
 
       - name: Build and push
         id: buildpush
-        environment: development
         uses: docker/build-push-action@v4
         with:
           builder: ${{ steps.buildx.outputs.name }}
