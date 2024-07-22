@@ -30,6 +30,7 @@ jobs:
         id: build-push-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ steps.login-ecr.outputs.repository }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
           make image-ecr
